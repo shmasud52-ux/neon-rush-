@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+<meta name="theme-color" content="#05010f" />
+<title>Neon Rush — Cyber Highway</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div id="game-root">
+
+  <!-- ===== GAMEPLAY CANVAS ===== -->
+  <canvas id="game-canvas"></canvas>
+
+  <!-- ===== HUD ===== -->
+  <div id="hud" class="hidden">
+    <div class="hud-top">
+      <div class="hud-left">
+        <div class="hud-item"><span class="label">SCORE</span><span id="hud-score" class="value">0</span></div>
+        <div class="hud-item"><span class="label">DIST</span><span id="hud-dist" class="value">0m</span></div>
+      </div>
+      <div class="hud-right">
+        <div class="hud-item small"><span class="label">COINS</span><span id="hud-coins" class="value gold">0</span></div>
+        <div class="hud-item small"><span class="label">COMBO</span><span id="hud-combo" class="value cyan">x1</span></div>
+        <div class="hud-item small"><span class="label">SPEED</span><span id="hud-speed" class="value pink">0</span></div>
+      </div>
+    </div>
+
+    <div class="hud-buttons">
+      <button class="icon-btn" id="btn-pause" aria-label="Pause">❚❚</button>
+      <button class="icon-btn" id="btn-sound" aria-label="Sound">🔊</button>
+      <button class="icon-btn" id="btn-music" aria-label="Music">♪</button>
+    </div>
+
+    <!-- Power-up indicators -->
+    <div id="powerup-bar"></div>
+  </div>
+
+  <!-- ===== TOUCH CONTROLS ===== -->
+  <div id="touch-controls" class="hidden">
+    <button class="touch-btn" id="btn-left" aria-label="Left">◀</button>
+    <button class="touch-btn" id="btn-right" aria-label="Right">▶</button>
+  </div>
+
+  <!-- ===== START SCREEN ===== -->
+  <div id="screen-start" class="screen">
+    <div class="screen-inner">
+      <h1 class="title">NEON<span>RUSH</span></h1>
+      <p class="subtitle">CYBER HIGHWAY</p>
+      <div class="menu">
+        <button class="btn primary" data-action="play">PLAY</button>
+        <button class="btn" data-action="garage">GARAGE</button>
+        <button class="btn" data-action="missions">MISSIONS</button>
+        <button class="btn" data-action="settings">SETTINGS</button>
+      </div>
+      <div class="stats-row">
+        <div><span class="label">BEST</span><span id="start-best">0</span></div>
+        <div><span class="label">COINS</span><span id="start-coins" class="gold">0</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== GARAGE SCREEN ===== -->
+  <div id="screen-garage" class="screen hidden">
+    <div class="screen-inner wide">
+      <h2 class="title small">GARAGE</h2>
+      <div class="coins-tag">COINS: <span id="garage-coins" class="gold">0</span></div>
+      <div id="garage-list" class="garage-list"></div>
+      <button class="btn" data-action="back">BACK</button>
+    </div>
+  </div>
+
+  <!-- ===== MISSIONS SCREEN ===== -->
+  <div id="screen-missions" class="screen hidden">
+    <div class="screen-inner wide">
+      <h2 class="title small">MISSIONS</h2>
+      <div id="missions-list" class="missions-list"></div>
+      <button class="btn" data-action="back">BACK</button>
+    </div>
+  </div>
+
+  <!-- ===== SETTINGS SCREEN ===== -->
+  <div id="screen-settings" class="screen hidden">
+    <div class="screen-inner">
+      <h2 class="title small">SETTINGS</h2>
+      <div class="settings-list">
+        <label class="toggle"><span>Sound Effects</span><input type="checkbox" id="set-sound" checked></label>
+        <label class="toggle"><span>Music</span><input type="checkbox" id="set-music" checked></label>
+        <label class="toggle"><span>Show Touch Buttons</span><input type="checkbox" id="set-touch" checked></label>
+      </div>
+      <button class="btn danger" id="btn-reset">RESET PROGRESS</button>
+      <button class="btn" data-action="back">BACK</button>
+    </div>
+  </div>
+
+  <!-- ===== PAUSE SCREEN ===== -->
+  <div id="screen-pause" class="screen hidden">
+    <div class="screen-inner">
+      <h2 class="title small">PAUSED</h2>
+      <button class="btn primary" data-action="resume">RESUME</button>
+      <button class="btn" data-action="restart">RESTART</button>
+      <button class="btn" data-action="quit">QUIT</button>
+    </div>
+  </div>
+
+  <!-- ===== GAME OVER SCREEN ===== -->
+  <div id="screen-gameover" class="screen hidden">
+    <div class="screen-inner">
+      <h2 class="title small">GAME OVER</h2>
+      <div class="gameover-stats">
+        <div class="row big"><span>SCORE</span><span id="go-score">0</span></div>
+        <div class="row"><span>DISTANCE</span><span id="go-dist">0m</span></div>
+        <div class="row"><span>COINS</span><span id="go-coins" class="gold">0</span></div>
+        <div class="row"><span>BEST</span><span id="go-best" class="cyan">0</span></div>
+      </div>
+      <button class="btn primary" data-action="restart">RESTART</button>
+      <button class="btn" data-action="garage">GARAGE</button>
+      <button class="btn" data-action="menu">MENU</button>
+    </div>
+  </div>
+
+  <!-- ===== TOAST ===== -->
+  <div id="toast" class="toast"></div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
